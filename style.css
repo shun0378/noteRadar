@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    overflow-y: hidden;
+    /* 画面スクロールを発生させない */
+}
+
+.container {
+    margin: auto;
+    /* 中央揃え */
+    max-width: 100%;
+    /* 横幅を画面幅いっぱいに広げる */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    /* コンテナ内の余白 */
+}
+
+.chart-container,
+.param-container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.param-container {
+    max-height: 500px;
+    /* 最大高さを設定してオーバーフローする場合にスクロールバーを表示 */
+    overflow-y: auto;
+}
+
+#fileInput {
+    margin: 20px 0;
+    /* ファイル入力ボタンの上下余白 */
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-y: scroll;
+    }
+
+    .container {
+        overflow-y: visible;
+    }
+}
+
+@media (max-height: 600px) {
+    body {
+        overflow-y: scroll;
+    }
+
+    .container {
+        overflow-y: visible;
+    }
+}
+
+/* Flexbox を使って同じ高さにする */
+.row.equal-height {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row.equal-height>[class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container,
+.param-container {
+    flex: 1;
+}
+
+canvas {
+    display: block;
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
