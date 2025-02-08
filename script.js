@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
             gimmick: '%',
         };
 
-        // ƒŒ[ƒ_[ƒ`ƒƒ[ƒgì¬‚Æ•ÛŽ
+        // ãƒ¬ãƒ¼ãƒ€ãƒ¼ãƒãƒ£ãƒ¼ãƒˆä½œæˆã¨ä¿æŒ
         rates.forEach((rate, index) => {
             radarCharts.push(createRadarChart(parameters[index], 'myChart', getChartType(rate)));
         });
 
-        // ƒZƒŒƒNƒg•ÏXŽž‚Ìˆ—
+        // ã‚»ãƒ¬ã‚¯ãƒˆå¤‰æ›´æ™‚ã®å‡¦ç†
         const courseInput = document.getElementById('courseInput');
         if (courseInput) {
             courseInput.addEventListener('change', (event) => {
@@ -50,14 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (parameters[selectedIndex]) {
 
-                    // V‚µ‚¢ƒ`ƒƒ[ƒg‚Ìì¬
+                    // æ–°ã—ã„ãƒãƒ£ãƒ¼ãƒˆã®ä½œæˆ
                     radarCharts[selectedIndex] = createRadarChart(
                         parameters[selectedIndex],
                         'myChart',
                         getChartType(rates[selectedIndex])
                     );
 
-                    // ƒpƒ‰ƒ[ƒ^‚ÌXV•\Ž¦
+                    // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®æ›´æ–°è¡¨ç¤º
                     displayParametersWithUnits(
                         scoreParameters[selectedIndex],
                         units,
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // ‰Šúó‘Ô‚ÅÅ‰‚Ìƒ`ƒƒ[ƒg‚ð•\Ž¦
+            // åˆæœŸçŠ¶æ…‹ã§æœ€åˆã®ãƒãƒ£ãƒ¼ãƒˆã‚’è¡¨ç¤º
             if (parameters.length > 0) {
                 radarCharts[0] = createRadarChart(parameters[0], 'myChart', getChartType(rates[0]));
                 displayParametersWithUnits(scoreParameters[0], units, tjaName);
@@ -79,11 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
 let radarCharts = [];
 
 /**
- * ”z—ñ‚©‚çselect—v‘f‚ÉƒIƒvƒVƒ‡ƒ“‚ð’Ç‰Á‚µAŠù‘¶‚ÌƒIƒvƒVƒ‡ƒ“‚ð’u‚«Š·‚¦‚éŠÖ”
+ * é…åˆ—ã‹ã‚‰selectè¦ç´ ã«ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’è¿½åŠ ã—ã€æ—¢å­˜ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’ç½®ãæ›ãˆã‚‹é–¢æ•°
  * 
- * @param {string} selectId - “ü—Í‚·‚éselect—v‘f‚ÌID
- * @param {string[]} optionsArray - ’Ç‰Á‚·‚éƒIƒvƒVƒ‡ƒ“’l‚Ì”z—ñ
- * @returns {void} ˆ—Œ‹‰Ê‚ð•Ô‚³‚¸A•›ì—p‚Æ‚µ‚Äselect—v‘f‚ðXV‚·‚é
+ * @param {string} selectId - å…¥åŠ›ã™ã‚‹selectè¦ç´ ã®ID
+ * @param {string[]} optionsArray - è¿½åŠ ã™ã‚‹ã‚ªãƒ—ã‚·ãƒ§ãƒ³å€¤ã®é…åˆ—
+ * @returns {void} å‡¦ç†çµæžœã‚’è¿”ã•ãšã€å‰¯ä½œç”¨ã¨ã—ã¦selectè¦ç´ ã‚’æ›´æ–°ã™ã‚‹
  */
 const addOptionsToSelect = (selectId, optionsArray) => {
     const selectElement = document.getElementById(selectId);
@@ -103,26 +103,26 @@ const addOptionsToSelect = (selectId, optionsArray) => {
 };
 
 /**
- * ƒpƒ‰ƒ[ƒ^‚ð¶¬
- * @param {Object} defaultParameter - ƒfƒtƒHƒ‹ƒgƒpƒ‰ƒ[ƒ^
- * @returns {Object} - ƒpƒ‰ƒ[ƒ^
+ * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç”Ÿæˆ
+ * @param {Object} defaultParameter - ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+ * @returns {Object} - ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
  */
 const calculateParameter = defaultParameter => {
     return clipValues({
         density: (Math.tanh((defaultParameter.density - 6) / 3) + 1) * 5,
         scrollSpeed: (Math.tanh((defaultParameter.scrollSpeed - 200) / 75) + 1) * 5,
         rhythm: Math.log2(defaultParameter.rhythm / 100 + 1) * 10,
-        crowd: (Math.tanh((defaultParameter.crowd - 12) / 6) + 1) * 5,
+        crowd: (Math.tanh((defaultParameter.crowd - 16) / 8) + 1) * 5,
         gimmick: Math.log2(defaultParameter.gimmick / 100 + 1) * 10,
         strokes: (defaultParameter.strokes ** 1.7) / (1000 + (defaultParameter.strokes ** 1.7)) * 10,
     }, 0, 9999);
 };
 
 /**
- * ƒIƒuƒWƒFƒNƒg“à‚Ì•Ï”‚ÌƒNƒŠƒbƒsƒ“ƒO‚ðs‚¤ŠÖ”
- * @param {Object} obj - ƒIƒuƒWƒFƒNƒg
- * @param {Number} min - Å¬’l
- * @param {Number} max - Å‘å’l
+ * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå†…ã®å¤‰æ•°ã®ã‚¯ãƒªãƒƒãƒ”ãƒ³ã‚°ã‚’è¡Œã†é–¢æ•°
+ * @param {Object} obj - ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+ * @param {Number} min - æœ€å°å€¤
+ * @param {Number} max - æœ€å¤§å€¤
  * @returns 
  */
 const clipValues = (obj, min, max) => {
@@ -136,10 +136,10 @@ const clipValues = (obj, min, max) => {
 };
 
 /**
- * “ïˆÕ“x”Ô†‚Ì”z—ñ‚ð‘Î‰ž‚·‚é–¼‘O‚É•ÏŠ·‚·‚éŠÖ”
+ * é›£æ˜“åº¦ç•ªå·ã®é…åˆ—ã‚’å¯¾å¿œã™ã‚‹åå‰ã«å¤‰æ›ã™ã‚‹é–¢æ•°
  * 
- * @param {string[]} courseNumbers - “ïˆÕ“x”Ô†‚ð•¶Žš—ñ‚Æ‚µ‚ÄŠÜ‚Þ”z—ñ
- * @returns {string[]} - “ïˆÕ“x–¼‚ð•¶Žš—ñ‚É’u‚«Š·‚¦‚½”z—ñ
+ * @param {string[]} courseNumbers - é›£æ˜“åº¦ç•ªå·ã‚’æ–‡å­—åˆ—ã¨ã—ã¦å«ã‚€é…åˆ—
+ * @returns {string[]} - é›£æ˜“åº¦åã‚’æ–‡å­—åˆ—ã«ç½®ãæ›ãˆãŸé…åˆ—
  */
 const courseRename = (courseNumbers) => {
     const courseNames = courseNumbers.map(item => {
@@ -158,10 +158,10 @@ const courseRename = (courseNumbers) => {
 };
 
 /**
- * ƒ`ƒƒ[ƒg‚ÌF‚ðŒˆ’è‚·‚é
+ * ãƒãƒ£ãƒ¼ãƒˆã®è‰²ã‚’æ±ºå®šã™ã‚‹
  * 
- * @param {string[]} rates - ŠeƒŒ[ƒg’l
- * @returns {string[]} - ƒ`ƒƒ[ƒg‚ÌF
+ * @param {string[]} rates - å„ãƒ¬ãƒ¼ãƒˆå€¤
+ * @returns {string[]} - ãƒãƒ£ãƒ¼ãƒˆã®è‰²
  */
 const getChartType = rates => {
     const conditions = {
