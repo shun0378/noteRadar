@@ -1,9 +1,9 @@
-//’è”
+//å®šæ•°
 const FIXED_DIGIT = 10
 /**
- * ƒfƒtƒHƒ‹ƒgƒpƒ‰ƒ[ƒ^‚ğ¶¬
- * @param {Object} scoreDetails - ƒXƒRƒAÚ×ƒf[ƒ^
- * @returns {Object} - ƒfƒtƒHƒ‹ƒgƒpƒ‰ƒ[ƒ^
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç”Ÿæˆ
+ * @param {Object} scoreDetails - ã‚¹ã‚³ã‚¢è©³ç´°ãƒ‡ãƒ¼ã‚¿
+ * @returns {Object} - ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
  */
 const createDefaultParameter = scoreDetail => ({
     density: calculateDensity(scoreDetail),
@@ -15,17 +15,17 @@ const createDefaultParameter = scoreDetail => ({
 });
 
 /**
- * •½‹Ï–§“x‚ğ‹‚ß‚é
- * @param {Array} validNotesStatus - ƒm[ƒc‚ÌƒXƒe[ƒ^ƒX‚Ì2ŸŒ³”z—ñ
- * @returns {number} •½‹Ï–§“x
+ * å¹³å‡å¯†åº¦ã‚’æ±‚ã‚ã‚‹
+ * @param {Array} validNotesStatus - ãƒãƒ¼ãƒ„ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®2æ¬¡å…ƒé…åˆ—
+ * @returns {number} å¹³å‡å¯†åº¦
  */
 const calculateDensity = validNotesStatus =>
     Number(((countElementsIn2DArray(validNotesStatus) - 1) / sumPropertyValues2DArray(validNotesStatus, 'interval')).toFixed(FIXED_DIGIT));
 
 /**
- * ƒXƒNƒ[ƒ‹‘¬“x‚ğ‹‚ß‚é
- * @param {Array} validNotesStatus - ƒm[ƒc‚ÌƒXƒe[ƒ^ƒX‚Ì2ŸŒ³”z—ñ
- * @returns {number} ƒXƒNƒ[ƒ‹‘¬“x
+ * ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é€Ÿåº¦ã‚’æ±‚ã‚ã‚‹
+ * @param {Array} validNotesStatus - ãƒãƒ¼ãƒ„ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®2æ¬¡å…ƒé…åˆ—
+ * @returns {number} ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é€Ÿåº¦
  */
 const calculateScrollSpeed = validNotesStatus =>
     getMostFrequentRoundedValue(
@@ -43,9 +43,9 @@ const calculateScrollSpeed = validNotesStatus =>
         ].sort((a, b) => a - b)).mostFrequent
 
 /**
- * –§W“x‚ğŒvZ
- * @param {Array} parameter - ƒm[ƒcƒf[ƒ^‚Ì2ŸŒ³”z—ñ
- * @returns {number} –§W“x
+ * å¯†é›†åº¦ã‚’è¨ˆç®—
+ * @param {Array} parameter - ãƒãƒ¼ãƒ„ãƒ‡ãƒ¼ã‚¿ã®2æ¬¡å…ƒé…åˆ—
+ * @returns {number} å¯†é›†åº¦
  */
 const calculateCrowd = parameter => {
     const notesCount = separatelyCountElementsIn2DArray(parameter).filter(item => item !== 0);
@@ -57,16 +57,16 @@ const calculateCrowd = parameter => {
                 ? crowd / (sumPropertyValues1DArray(targetMeasure[i], 'highSpeed') / targetMeasure[i].length) / measure.measureWidth
                 : 0;
         }),
-        90
+        100
     )
     if (crowd === null) throw new Error("crowd is null");
     return Number(crowd.toFixed(FIXED_DIGIT));
 };
 
 /**
- * ¬ß“à–§“x‚ğŒvZ
- * @param {Array} validNotesStatus - ƒm[ƒc‚ÌƒXƒe[ƒ^ƒX‚Ì2ŸŒ³”z—ñ
- * @returns {Array<number>} ¬ß‚²‚Æ‚Ì–§“x”z—ñ
+ * å°ç¯€å†…å¯†åº¦ã‚’è¨ˆç®—
+ * @param {Array} validNotesStatus - ãƒãƒ¼ãƒ„ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®2æ¬¡å…ƒé…åˆ—
+ * @returns {Array<number>} å°ç¯€ã”ã¨ã®å¯†åº¦é…åˆ—
  */
 const calculateLocalDensities = validNotesStatus => {
     const measureNotesCounts = separatelyCountElementsIn2DArray(validNotesStatus);
@@ -78,9 +78,9 @@ const calculateLocalDensities = validNotesStatus => {
 };
 
 /**
- * Å‘å˜A•„”‚ğŒvZ
- * @param {Array} arr - ƒm[ƒcƒf[ƒ^‚Ì2ŸŒ³”z—ñ
- * @returns {number} Å‘å˜A•„”
+ * æœ€å¤§é€£ç¬¦æ•°ã‚’è¨ˆç®—
+ * @param {Array} arr - ãƒãƒ¼ãƒ„ãƒ‡ãƒ¼ã‚¿ã®2æ¬¡å…ƒé…åˆ—
+ * @returns {number} æœ€å¤§é€£ç¬¦æ•°
  */
 const calculateStrokes = arr => {
     let max = 0;
@@ -101,9 +101,9 @@ const calculateStrokes = arr => {
 };
 
 /**
- * ƒŠƒYƒ€“ïˆÕ“x‚ğŒvZ
- * @param {Array} arr - ƒm[ƒcƒf[ƒ^‚Ì2ŸŒ³”z—ñ
- * @returns {number} ƒŠƒYƒ€“ïˆÕ“x
+ * ãƒªã‚ºãƒ é›£æ˜“åº¦ã‚’è¨ˆç®—
+ * @param {Array} arr - ãƒãƒ¼ãƒ„ãƒ‡ãƒ¼ã‚¿ã®2æ¬¡å…ƒé…åˆ—
+ * @returns {number} ãƒªã‚ºãƒ é›£æ˜“åº¦
  */
 const calculateRhythm = arr => {
     const trueCount = arr.reduce((count, subArray) => {
@@ -115,9 +115,9 @@ const calculateRhythm = arr => {
 };
 
 /**
- * ƒŠƒYƒ€‚ª•Ï‘¥“I‚©”»’è
- * @param {Array<number>} intervalTypes - ƒŠƒYƒ€ƒ^ƒCƒv‚Ì”z—ñ
- * @returns {boolean} •Ï‘¥“I‚©”Û‚©
+ * ãƒªã‚ºãƒ ãŒå¤‰å‰‡çš„ã‹åˆ¤å®š
+ * @param {Array<number>} intervalTypes - ãƒªã‚ºãƒ ã‚¿ã‚¤ãƒ—ã®é…åˆ—
+ * @returns {boolean} å¤‰å‰‡çš„ã‹å¦ã‹
  */
 const isIrregularRhythms = intervalTypes => {
     if (intervalTypes.length === 0) return false;
@@ -147,10 +147,10 @@ const isIrregularRhythms = intervalTypes => {
 };
 
 /**
- * V‚µ‚¢’l‚ğ”z—ñ‚ÉˆêˆÓ‚É’Ç‰Á
- * @param {Array<number>} arr - ”’l”z—ñ
- * @param {number} newValue - ’Ç‰Á‚·‚é’l
- * @returns {Array<number>} XV‚³‚ê‚½”z—ñ
+ * æ–°ã—ã„å€¤ã‚’é…åˆ—ã«ä¸€æ„ã«è¿½åŠ 
+ * @param {Array<number>} arr - æ•°å€¤é…åˆ—
+ * @param {number} newValue - è¿½åŠ ã™ã‚‹å€¤
+ * @returns {Array<number>} æ›´æ–°ã•ã‚ŒãŸé…åˆ—
  */
 const addUniqueElement = (arr, newValue) => {
     const roundedValue = Math.round(newValue * 1000) / 1000;
@@ -158,9 +158,9 @@ const addUniqueElement = (arr, newValue) => {
 };
 
 /**
- * interval ‚Ì n •ª‰¹•„‚ğŒvZ
- * @param {Array} subArray - ¬ßƒf[ƒ^
- * @returns {Array<number>} interval í—Ş”z—ñ
+ * interval ã® n åˆ†éŸ³ç¬¦ã‚’è¨ˆç®—
+ * @param {Array} subArray - å°ç¯€ãƒ‡ãƒ¼ã‚¿
+ * @returns {Array<number>} interval ç¨®é¡é…åˆ—
  */
 const calculateIntervalTypes = subArray =>
     subArray.reduce((intervalTypes, item) => {
@@ -171,9 +171,9 @@ const calculateIntervalTypes = subArray =>
     }, []);
 
 /**
- * ƒMƒ~ƒbƒN—¦‚ğŒvZ
- * @param {Array} validNotesStatus - ƒm[ƒc‚ÌƒXƒe[ƒ^ƒX‚Ì2ŸŒ³”z—ñ
- * @returns {number} ƒMƒ~ƒbƒN—¦
+ * ã‚®ãƒŸãƒƒã‚¯ç‡ã‚’è¨ˆç®—
+ * @param {Array} validNotesStatus - ãƒãƒ¼ãƒ„ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®2æ¬¡å…ƒé…åˆ—
+ * @returns {number} ã‚®ãƒŸãƒƒã‚¯ç‡
  */
 const calculateGimmick = validNotesStatus => {
     let preScroll = null;
@@ -201,45 +201,45 @@ const calculateGimmick = validNotesStatus => {
 
 
 //
-// ”Ä—pƒwƒ‹ƒp[ŠÖ”
+// æ±ç”¨ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•°
 // 
 
 /**
- * 2ŸŒ³”z—ñ“à‚Ì‘S—v‘f”‚ğƒJƒEƒ“ƒg‚·‚éŠÖ”
+ * 2æ¬¡å…ƒé…åˆ—å†…ã®å…¨è¦ç´ æ•°ã‚’ã‚«ã‚¦ãƒ³ãƒˆã™ã‚‹é–¢æ•°
  *
- * @param {Array<Array<any>>} arr - 2ŸŒ³”z—ñ
- * @returns {number} 2ŸŒ³”z—ñ“à‚Ì‘S—v‘f”
+ * @param {Array<Array<any>>} arr - 2æ¬¡å…ƒé…åˆ—
+ * @returns {number} 2æ¬¡å…ƒé…åˆ—å†…ã®å…¨è¦ç´ æ•°
  */
 const countElementsIn2DArray = arr =>
     arr.reduce((total, subArray) => total + subArray.length, 0);
 
 /**
- * ƒIƒuƒWƒFƒNƒg‚Ì”z—ñ“à‚ÅAw’è‚µ‚½ƒvƒƒpƒeƒB‚Ì’l‚Ì‡Œv‚ğŒvZ‚·‚éŠÖ”
+ * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é…åˆ—å†…ã§ã€æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®åˆè¨ˆã‚’è¨ˆç®—ã™ã‚‹é–¢æ•°
  *
- * @param {Array<Object>} arr - ƒIƒuƒWƒFƒNƒg‚Ì”z—ñ
- * @param {string} prop - ‡Œv‚·‚éƒvƒƒpƒeƒB‚ÌƒL[
- * @returns {number} ƒvƒƒpƒeƒB‚Ì’l‚Ì‡Œvi‘¶İ‚µ‚È‚¢ê‡‚Í0‚Æ‚µ‚Äˆµ‚¤j
+ * @param {Array<Object>} arr - ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é…åˆ—
+ * @param {string} prop - åˆè¨ˆã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚­ãƒ¼
+ * @returns {number} ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®åˆè¨ˆï¼ˆå­˜åœ¨ã—ãªã„å ´åˆã¯0ã¨ã—ã¦æ‰±ã†ï¼‰
  */
 const sumPropertyValues1DArray = (arr, prop) =>
     arr.reduce((sum, obj) => sum + (obj[prop] || 0), 0);
 
 /**
- * 2ŸŒ³”z—ñ“à‚Ì‘SƒIƒuƒWƒFƒNƒg‚É‚Â‚¢‚ÄAw’è‚µ‚½ƒvƒƒpƒeƒB‚Ì’l‚Ì‡Œv‚ğŒvZ‚·‚éŠÖ”
+ * 2æ¬¡å…ƒé…åˆ—å†…ã®å…¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã¤ã„ã¦ã€æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®åˆè¨ˆã‚’è¨ˆç®—ã™ã‚‹é–¢æ•°
  *
- * @param {Array<Array<Object>>} arr - 2ŸŒ³”z—ñiƒIƒuƒWƒFƒNƒg‚Ì”z—ñ‚Ì”z—ñj
- * @param {string} prop - ‡Œv‚·‚éƒvƒƒpƒeƒB‚ÌƒL[
- * @returns {number} 2ŸŒ³”z—ñ“à‚ÌƒvƒƒpƒeƒB’l‚Ì‡Œv
+ * @param {Array<Array<Object>>} arr - 2æ¬¡å…ƒé…åˆ—ï¼ˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é…åˆ—ã®é…åˆ—ï¼‰
+ * @param {string} prop - åˆè¨ˆã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚­ãƒ¼
+ * @returns {number} 2æ¬¡å…ƒé…åˆ—å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®åˆè¨ˆ
  */
 const sumPropertyValues2DArray = (arr, prop) =>
     arr.reduce((total, subArray) => total + sumPropertyValues1DArray(subArray, prop), 0);
 
 /**
- * ”’l‚Ì”z—ñ‚©‚çAãˆÊ n ƒp[ƒZƒ“ƒg‚Ì’l‚ğæ“¾‚·‚éŠÖ”
+ * æ•°å€¤ã®é…åˆ—ã‹ã‚‰ã€ä¸Šä½ n ãƒ‘ãƒ¼ã‚»ãƒ³ãƒˆã®å€¤ã‚’å–å¾—ã™ã‚‹é–¢æ•°
  *
- * @param {number[]} values - ”’l‚Ì”z—ñ
- * @param {number} n - ãˆÊ‰½ƒp[ƒZƒ“ƒg‚© (0`100)
- * @returns {number|null} ãˆÊ n ƒp[ƒZƒ“ƒg‚É‘Š“–‚·‚é’lB”z—ñ‚ª‹ó‚Ìê‡‚Í null ‚ğ•Ô‚·
- * @throws {Error} n ‚ª 0`100 ‚Ì”ÍˆÍŠO‚Ìê‡‚ÉƒGƒ‰[‚ğƒXƒ[‚·‚é
+ * @param {number[]} values - æ•°å€¤ã®é…åˆ—
+ * @param {number} n - ä¸Šä½ä½•ãƒ‘ãƒ¼ã‚»ãƒ³ãƒˆã‹ (0ï½100)
+ * @returns {number|null} ä¸Šä½ n ãƒ‘ãƒ¼ã‚»ãƒ³ãƒˆã«ç›¸å½“ã™ã‚‹å€¤ã€‚é…åˆ—ãŒç©ºã®å ´åˆã¯ null ã‚’è¿”ã™
+ * @throws {Error} n ãŒ 0ï½100 ã®ç¯„å›²å¤–ã®å ´åˆã«ã‚¨ãƒ©ãƒ¼ã‚’ã‚¹ãƒ­ãƒ¼ã™ã‚‹
  */
 const calculateTopPercentageValue = (values, n) => {
     if (values.length === 0) return null;
@@ -251,70 +251,70 @@ const calculateTopPercentageValue = (values, n) => {
 };
 
 /**
- * 2ŸŒ³”z—ñ‚ğ1ŸŒ³‚É•½’R‰»‚·‚éŠÖ”
+ * 2æ¬¡å…ƒé…åˆ—ã‚’1æ¬¡å…ƒã«å¹³å¦åŒ–ã™ã‚‹é–¢æ•°
  *
- * @param {Array<Array<any>>} arr2D - 2ŸŒ³”z—ñ
- * @returns {Array<any>} •½’R‰»‚³‚ê‚½1ŸŒ³”z—ñ
+ * @param {Array<Array<any>>} arr2D - 2æ¬¡å…ƒé…åˆ—
+ * @returns {Array<any>} å¹³å¦åŒ–ã•ã‚ŒãŸ1æ¬¡å…ƒé…åˆ—
  */
 const flatten2DArray = arr2D => arr2D.flat();
 
 /**
- * ƒIƒuƒWƒFƒNƒg‚Ì”z—ñ‚©‚çAw’è‚µ‚½ƒL[‚Ì’l‚Ì‚İ‚ğ’Šo‚µ‚Ä1ŸŒ³”z—ñ‚É‚·‚éŠÖ”
+ * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é…åˆ—ã‹ã‚‰ã€æŒ‡å®šã—ãŸã‚­ãƒ¼ã®å€¤ã®ã¿ã‚’æŠ½å‡ºã—ã¦1æ¬¡å…ƒé…åˆ—ã«ã™ã‚‹é–¢æ•°
  *
- * @param {Array<Object>} data - ƒIƒuƒWƒFƒNƒg‚Ì”z—ñ
- * @param {string} key - ’Šo‚·‚éƒL[
- * @returns {Array<any>} ’Šo‚³‚ê‚½’l‚Ì1ŸŒ³”z—ñ
+ * @param {Array<Object>} data - ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é…åˆ—
+ * @param {string} key - æŠ½å‡ºã™ã‚‹ã‚­ãƒ¼
+ * @returns {Array<any>} æŠ½å‡ºã•ã‚ŒãŸå€¤ã®1æ¬¡å…ƒé…åˆ—
  */
 const extractKeyTo1DArray = (data, key) => data.map(obj => obj[key]);
 
 /**
- * 2ŸŒ³”z—ñ“à‚ÌŠeƒTƒu”z—ñ‚©‚çAw’è‚µ‚½ƒL[‚Ì’l‚Ì‚İ‚ğ’Šo‚µ‚Ä2ŸŒ³”z—ñ‚É‚·‚éŠÖ”
+ * 2æ¬¡å…ƒé…åˆ—å†…ã®å„ã‚µãƒ–é…åˆ—ã‹ã‚‰ã€æŒ‡å®šã—ãŸã‚­ãƒ¼ã®å€¤ã®ã¿ã‚’æŠ½å‡ºã—ã¦2æ¬¡å…ƒé…åˆ—ã«ã™ã‚‹é–¢æ•°
  *
- * @param {Array<Array<Object>>} data - 2ŸŒ³”z—ñiƒIƒuƒWƒFƒNƒg‚Ì”z—ñ‚Ì”z—ñj
- * @param {string} key - ’Šo‚·‚éƒL[
- * @returns {Array<Array<any>>} ŠeƒTƒu”z—ñ‚©‚ç’Šo‚³‚ê‚½’l‚Ì2ŸŒ³”z—ñ
+ * @param {Array<Array<Object>>} data - 2æ¬¡å…ƒé…åˆ—ï¼ˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é…åˆ—ã®é…åˆ—ï¼‰
+ * @param {string} key - æŠ½å‡ºã™ã‚‹ã‚­ãƒ¼
+ * @returns {Array<Array<any>>} å„ã‚µãƒ–é…åˆ—ã‹ã‚‰æŠ½å‡ºã•ã‚ŒãŸå€¤ã®2æ¬¡å…ƒé…åˆ—
  */
 const extractKeyTo2DArray = (data, key) => data.map(innerArray => extractKeyTo1DArray(innerArray, key));
 
 /**
- * 2ŸŒ³”z—ñ“à‚ÌŠeƒTƒu”z—ñ‚Ì—v‘f”‚ğŒÂ•Ê‚ÉƒJƒEƒ“ƒg‚·‚éŠÖ”
+ * 2æ¬¡å…ƒé…åˆ—å†…ã®å„ã‚µãƒ–é…åˆ—ã®è¦ç´ æ•°ã‚’å€‹åˆ¥ã«ã‚«ã‚¦ãƒ³ãƒˆã™ã‚‹é–¢æ•°
  *
- * @param {Array<Array<any>>} arr2D - 2ŸŒ³”z—ñ
- * @returns {number[]} ŠeƒTƒu”z—ñ‚Ì—v‘f”‚Ì”z—ñ
+ * @param {Array<Array<any>>} arr2D - 2æ¬¡å…ƒé…åˆ—
+ * @returns {number[]} å„ã‚µãƒ–é…åˆ—ã®è¦ç´ æ•°ã®é…åˆ—
  */
 const separatelyCountElementsIn2DArray = arr2D => arr2D.map(row => row.length);
 
 /**
- * 2ŸŒ³”z—ñ“à‚ÌŠeƒTƒu”z—ñ‚É‚Â‚¢‚ÄAw’è‚µ‚½ƒvƒƒpƒeƒB‚Ì’l‚Ì‡Œv‚ğŒvZ‚·‚éŠÖ”
+ * 2æ¬¡å…ƒé…åˆ—å†…ã®å„ã‚µãƒ–é…åˆ—ã«ã¤ã„ã¦ã€æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®åˆè¨ˆã‚’è¨ˆç®—ã™ã‚‹é–¢æ•°
  *
- * @param {Array<Array<Object>>} arr2D - 2ŸŒ³”z—ñiƒIƒuƒWƒFƒNƒg‚Ì”z—ñ‚Ì”z—ñj
- * @param {string} prop - ‡Œv‚·‚éƒvƒƒpƒeƒB‚ÌƒL[
- * @returns {number[]} ŠeƒTƒu”z—ñ‚²‚Æ‚ÌƒvƒƒpƒeƒB’l‚Ì‡Œv‚Ì”z—ñ
+ * @param {Array<Array<Object>>} arr2D - 2æ¬¡å…ƒé…åˆ—ï¼ˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é…åˆ—ã®é…åˆ—ï¼‰
+ * @param {string} prop - åˆè¨ˆã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚­ãƒ¼
+ * @returns {number[]} å„ã‚µãƒ–é…åˆ—ã”ã¨ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®åˆè¨ˆã®é…åˆ—
  */
 const separatelySumPropertyValues2DArray = (arr2D, prop) => arr2D.map(arr => sumPropertyValues1DArray(arr, prop));
 
 /**
- * 2‚Â‚Ì”z—ñ‚ÌŠe—v‘f‚ğŠ|‚¯‡‚í‚¹A‚»‚ÌŒ‹‰Ê‚ğ”z—ñ‚Æ‚µ‚Ä•Ô‚·ŠÖ”
+ * 2ã¤ã®é…åˆ—ã®å„è¦ç´ ã‚’æ›ã‘åˆã‚ã›ã€ãã®çµæœã‚’é…åˆ—ã¨ã—ã¦è¿”ã™é–¢æ•°
  *
- * @param {number[]} a - ”’l‚Ì”z—ñ
- * @param {number[]} b - ”’l‚Ì”z—ñia‚Æ“¯‚¶’·‚³‚Å‚ ‚é‚±‚Æj
- * @returns {number[]} Še—v‘f“¯m‚ğŠ|‚¯‡‚í‚¹‚½Œ‹‰Ê‚Ì”z—ñ
+ * @param {number[]} a - æ•°å€¤ã®é…åˆ—
+ * @param {number[]} b - æ•°å€¤ã®é…åˆ—ï¼ˆaã¨åŒã˜é•·ã•ã§ã‚ã‚‹ã“ã¨ï¼‰
+ * @returns {number[]} å„è¦ç´ åŒå£«ã‚’æ›ã‘åˆã‚ã›ãŸçµæœã®é…åˆ—
  */
 const multiplyArrays = (a, b) => a.map((x, i) => x * b[i]);
 
 /**
- * 2‚Â‚Ì2ŸŒ³”z—ñ‚ÌŠe‘Î‰—v‘f‚ğŠ|‚¯‡‚í‚¹A‚»‚ÌŒ‹‰Ê‚ğ2ŸŒ³”z—ñ‚Æ‚µ‚Ä•Ô‚·ŠÖ”
+ * 2ã¤ã®2æ¬¡å…ƒé…åˆ—ã®å„å¯¾å¿œè¦ç´ ã‚’æ›ã‘åˆã‚ã›ã€ãã®çµæœã‚’2æ¬¡å…ƒé…åˆ—ã¨ã—ã¦è¿”ã™é–¢æ•°
  *
- * @param {Array<Array<number>>} a - 2ŸŒ³”z—ñi”’l‚Ì”z—ñ‚Ì”z—ñj
- * @param {Array<Array<number>>} b - 2ŸŒ³”z—ñia‚Æ“¯‚¶Œ`ó‚Å‚ ‚é‚±‚Æj
- * @returns {Array<Array<number>>} Še‘Î‰—v‘f“¯m‚ğŠ|‚¯‡‚í‚¹‚½Œ‹‰Ê‚Ì2ŸŒ³”z—ñ
+ * @param {Array<Array<number>>} a - 2æ¬¡å…ƒé…åˆ—ï¼ˆæ•°å€¤ã®é…åˆ—ã®é…åˆ—ï¼‰
+ * @param {Array<Array<number>>} b - 2æ¬¡å…ƒé…åˆ—ï¼ˆaã¨åŒã˜å½¢çŠ¶ã§ã‚ã‚‹ã“ã¨ï¼‰
+ * @returns {Array<Array<number>>} å„å¯¾å¿œè¦ç´ åŒå£«ã‚’æ›ã‘åˆã‚ã›ãŸçµæœã®2æ¬¡å…ƒé…åˆ—
  */
 const multiply2DArrays = (a, b) => a.map((row, i) => row.map((x, j) => x * b[i][j]));
 
 /**
- * À””z—ñ‚ÌŠe—v‘f‚ğlÌŒÜ“ü‚µAŠe’l‚ÌoŒ»‰ñ”‚ğ•Ô‚·ŠÖ”
- * @param {number[]} arr - À”‚Ì”z—ñ
- * @returns {Object} - lÌŒÜ“ü‚µ‚½’l‚ğƒL[A‚»‚ÌoŒ»‰ñ”‚ğ’l‚Æ‚·‚éƒIƒuƒWƒFƒNƒg
+ * å®Ÿæ•°é…åˆ—ã®å„è¦ç´ ã‚’å››æ¨äº”å…¥ã—ã€å„å€¤ã®å‡ºç¾å›æ•°ã‚’è¿”ã™é–¢æ•°
+ * @param {number[]} arr - å®Ÿæ•°ã®é…åˆ—
+ * @returns {Object} - å››æ¨äº”å…¥ã—ãŸå€¤ã‚’ã‚­ãƒ¼ã€ãã®å‡ºç¾å›æ•°ã‚’å€¤ã¨ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
  */
 const countRoundedValues = (arr) => {
     return arr.reduce((acc, num) => {
@@ -325,9 +325,9 @@ const countRoundedValues = (arr) => {
 };
 
 /**
- * À””z—ñ‚ÌŠe—v‘f‚ğlÌŒÜ“ü‚µ‚½Œ‹‰ÊAÅ‚à•po‚·‚é’l‚Æ‚»‚ÌoŒ»‰ñ”‚ğ•Ô‚·ŠÖ”
- * @param {number[]} arr - À”‚Ì”z—ñ
- * @returns {{mostFrequent: number, count: number}} - Å•p’l‚Æ‚»‚ÌŒÂ”‚ğ‚ÂƒIƒuƒWƒFƒNƒg
+ * å®Ÿæ•°é…åˆ—ã®å„è¦ç´ ã‚’å››æ¨äº”å…¥ã—ãŸçµæœã€æœ€ã‚‚é »å‡ºã™ã‚‹å€¤ã¨ãã®å‡ºç¾å›æ•°ã‚’è¿”ã™é–¢æ•°
+ * @param {number[]} arr - å®Ÿæ•°ã®é…åˆ—
+ * @returns {{mostFrequent: number, count: number}} - æœ€é »å€¤ã¨ãã®å€‹æ•°ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
  */
 const getMostFrequentRoundedValue = (arr) => {
     const counts = countRoundedValues(arr);
