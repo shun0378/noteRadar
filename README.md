@@ -1,6 +1,8 @@
 # noteRadar
 太鼓の達人のノーツレーダーです。
 
+https://shun0378.github.io/noteRadar/
+
 # 使い方
 「ファイルを選択」をクリックし、tjaファイルを選択する。
 右上のプルダウンメニューで難易度を選択する(Edit,Oni,Hard,Easy)。双打譜面は対象外。
